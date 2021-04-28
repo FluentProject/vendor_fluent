@@ -1,7 +1,7 @@
 # Allow vendor/extra to override any property by setting it first
 $(call inherit-product-if-exists, vendor/extra/product.mk)
 
-PRODUCT_BRAND ?= LineageOS
+PRODUCT_BRAND ?= Fluent
 
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
 
@@ -68,7 +68,9 @@ PRODUCT_COPY_FILES += \
 
 # This is Lineage!
 PRODUCT_COPY_FILES += \
-    vendor/lineage/config/permissions/org.lineageos.android.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/org.lineageos.android.xml
+    vendor/lineage/config/permissions/org.lineageos.android.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/org.lineageos.android.xml \
+    vendor/lineage/config/permissions/privapp-permissions-fluent-system.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/privapp-permissions-fluent.xml \
+    vendor/lineage/config/permissions/privapp-permissions-fluent-product.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/privapp-permissions-fluent.xml
 
 # Enforce privapp-permissions whitelist
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
@@ -121,6 +123,10 @@ PRODUCT_PACKAGES += \
     LineageThemesStub \
     ThemePicker
 
+# Additional features
+PRODUCT_PACKAGES += \
+    StitchImage
+    
 # Extra tools in Lineage
 PRODUCT_PACKAGES += \
     7z \
@@ -191,7 +197,7 @@ PRODUCT_DEXPREOPT_SPEED_APPS += \
 PRODUCT_ENFORCE_RRO_EXCLUDED_OVERLAYS += vendor/lineage/overlay
 DEVICE_PACKAGE_OVERLAYS += vendor/lineage/overlay/common
 
-PRODUCT_VERSION_MAJOR = 17
+PRODUCT_VERSION_MAJOR = 0
 PRODUCT_VERSION_MINOR = 1
 PRODUCT_VERSION_MAINTENANCE := 0
 
